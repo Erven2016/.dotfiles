@@ -1,5 +1,6 @@
 local spec = {
-  dir = "C:\\Users\\leigu\\Projects\\projectlaunch.nvim",
+  "sheodox/projectlaunch.nvim",
+  -- dir = "C:\\Users\\leigu\\Projects\\projectlaunch.nvim",
 }
 
 function spec.config()
