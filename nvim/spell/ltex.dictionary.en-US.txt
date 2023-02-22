@@ -1,0 +1,12 @@
+Floaterm
+NeoVim
+nvim
+keymaps
+gitsigns
+Keymaps
+tabline
+lazygit
+npm
+Neovim
+Nushell
+nushell
