@@ -5,7 +5,6 @@ local spec = {
 function spec.config()
   local config = require("custom")
 
-
   vim.g.floaterm_shell = config.shell
 
   vim.g.floaterm_position = "center"
