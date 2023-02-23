@@ -1,5 +1,18 @@
 # Nushell Environment Config File
 
+let STARSHIP_PATH = "~/.config/starship/"
+
+# create starship configuration file
+if ($"(which starship)" != []) {
+  let-env STARSHIP_CONFIG_PATH = $"($STARSHIP_PATH)config.toml"
+  let-env STARSHIP_INIT_PATH = $"($STARSHIP_PATH)init.nu"
+
+  if (($env.STARSHIP_INIT_PATH | path exists) == false) {
+    mkdir ~/.config/starship
+    starship init nu | save -f ~/.config/starship/init.nu # TODO: imporve this path
+  }
+}
+
 def create_left_prompt [] {
     let os_name = $"(sys | get host | get name)"
 
@@ -69,3 +82,5 @@ let-env NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+

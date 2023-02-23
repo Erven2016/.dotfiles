@@ -67,6 +67,8 @@ return {
           require("formatter.filetypes.javascript").prettier,
         },
 
+        nu = lsp_format,
+
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
         -- ["*"] = {},
