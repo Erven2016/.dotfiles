@@ -14,6 +14,7 @@ M.nvim_lspconfig = function() end
 
 M.mason_lspconfig = function()
   require("mason-lspconfig").setup({
+    -- TODO: disabled markdown for aarch64
     ensure_installed = { "rust_analyzer", "lua_ls", "pylsp", "marksman", "ltex" },
     automatic_installation = true,
   })
