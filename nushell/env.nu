@@ -7,7 +7,7 @@ if ($"(which starship)" != []) {
   let-env STARSHIP_CONFIG_PATH = $"($STARSHIP_PATH)config.toml"
   let-env STARSHIP_INIT_PATH = $"($STARSHIP_PATH)init.nu"
 
-  if (($env.STARSHIP_INIT_PATH | path exists) == false) {
+  if not ($env.STARSHIP_INIT_PATH | path exists) {
     mkdir ~/.config/starship
     starship init nu | save -f ~/.config/starship/init.nu # TODO: imporve this path
   }
@@ -47,9 +47,9 @@ let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 let-env PROMPT_INDICATOR = { "" } # { "〉" }
-let-env PROMPT_INDICATOR_VI_INSERT = { "vi| " }
-let-env PROMPT_INDICATOR_VI_NORMAL = { "vn| " }
-let-env PROMPT_MULTILINE_INDICATOR = { "M| " }
+let-env PROMPT_INDICATOR_VI_INSERT = { "[INSERT] " }
+let-env PROMPT_INDICATOR_VI_NORMAL = { "[NORMAL] " }
+let-env PROMPT_MULTILINE_INDICATOR = { "" }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)

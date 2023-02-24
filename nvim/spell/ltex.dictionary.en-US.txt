@@ -10,3 +10,4 @@ npm
 Neovim
 Nushell
 nushell
+toml
