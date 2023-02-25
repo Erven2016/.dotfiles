@@ -1,6 +1,8 @@
+let starship_executable_path = (which starship | get path | to text)
+
 let-env STARSHIP_SHELL = "nu"
 let-env STARSHIP_SESSION_KEY = (random chars -l 16)
-let-env PROMPT_MULTILINE_INDICATOR = (^'C:\Program Files\starship\bin\starship.exe' prompt --continuation)
+let-env PROMPT_MULTILINE_INDICATOR = (^$starship_executable_path prompt --continuation)
 
 # Does not play well with default character module.
 # TODO: Also Use starship vi mode indicators?
@@ -9,7 +11,7 @@ let-env PROMPT_INDICATOR = ""
 let-env PROMPT_COMMAND = {
     # jobs are not supported
     let width = (term size).columns
-    ^'C:\Program Files\starship\bin\starship.exe' prompt $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
+    ^$starship_executable_path prompt $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
 }
 
 # Whether we can show right prompt on the last line
@@ -32,7 +34,7 @@ if $has_rprompt_last_line_support {
 let-env PROMPT_COMMAND_RIGHT = {
     if $has_rprompt_last_line_support {
         let width = (term size).columns
-        ^'C:\Program Files\starship\bin\starship.exe' prompt --right $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
+        ^$starship_executable_path prompt --right $"--cmd-duration=($env.CMD_DURATION_MS)" $"--status=($env.LAST_EXIT_CODE)" $"--terminal-width=($width)"
     } else {
         ''
     }

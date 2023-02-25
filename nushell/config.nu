@@ -646,7 +646,7 @@ let-env config = {
 }
 
 # import starship
-if ($"(which starship)" != []) {
+if ((which starship) != []) {
   if ($env.STARSHIP_INIT_PATH | path exists) {
     source ~/.config/starship/init.nu
   }
