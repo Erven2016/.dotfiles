@@ -2,17 +2,45 @@
 
 let STARSHIP_PATH = "~/.config/starship/"
 
-# create starship configuration file
+# Directories to search for scripts when calling source or use
+#
+# By default, <nushell-config-dir>/scripts is added
+let-env NU_LIB_DIRS = [
+    ($nu.config-path | path dirname | path join 'scripts')
+]
+
+# Directories to search for plugin binaries when calling register
+#
+# By default, <nushell-config-dir>/plugins is added
+let-env NU_PLUGIN_DIRS = [
+    ($nu.config-path | path dirname | path join 'plugins')
+]
+
+# nushell-config-dir
+let-env NU_CONFIG_DIRS = ($nu.config-path | path dirname)
+
+# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
+# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
+
+# set default locle to en_US.UTF-8
+if (env | where name == LANG) == [] and (env | where name == LC_ALL) == [] {
+  let-env LANG = "en_US.UTF-8"
+  let-env LC_ALL = "en_US.UTF-8"
+}
+
+# STARSHIP
 if ($"(which starship)" != []) {
   let-env STARSHIP_CONFIG_PATH = $"($STARSHIP_PATH)config.toml"
   let-env STARSHIP_INIT_PATH = $"($STARSHIP_PATH)init.nu"
 
+  # create starship configuration file
   if not ($env.STARSHIP_INIT_PATH | path exists) {
     mkdir ~/.config/starship
     starship init nu | save -f ~/.config/starship/init.nu # TODO: imporve this path
   }
-}
-
+} else {
+# If starship is not executable then use default prompt of nushell
 def create_left_prompt [] {
     let os_name = $"(sys | get host | get name)"
 
@@ -50,6 +78,7 @@ let-env PROMPT_INDICATOR = { ">" } # { "〉" }
 let-env PROMPT_INDICATOR_VI_INSERT = { "" }
 let-env PROMPT_INDICATOR_VI_NORMAL = { "" }
 let-env PROMPT_MULTILINE_INDICATOR = { "" }
+}
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
@@ -65,28 +94,3 @@ let-env ENV_CONVERSIONS = {
     to_string: { |v| $v | path expand -n | str join (char esep) }
   }
 }
-
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'scripts')
-]
-
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins')
-]
-
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-
-
-# set default locle to en_US.UTF-8
-if (env | where name == LANG) == [] and (env | where name == LC_ALL) == [] {
-  let-env LANG = "en_US.UTF-8"
-  let-env LC_ALL = "en_US.UTF-8"
-}
-
