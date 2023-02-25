@@ -295,7 +295,6 @@ let light_theme = {
 #     carapace $spans.0 nushell $spans | from json
 # }
 
-
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
   ls: {
@@ -401,7 +400,7 @@ let-env config = {
   float_precision: 2
   # buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
   use_ansi_coloring: true
-  edit_mode: vi # emacs, vi
+  edit_mode: emacs # emacs, vi
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
   show_banner: false # true or false to enable or disable the banner
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.

@@ -1,7 +1,11 @@
-format = """
- $status $hostname$username$sudo in $directory $git_branch $rust \n
-\
-"""
+# starship.toml
+
+# format
+format = " $hostname$username$sudo in $directory $character"
+right_format = "$git_branch $package $status "
+
+# basic settings
+add_newline = false
 
 [hostname]
 ssh_only = false
@@ -24,10 +28,6 @@ truncation_symbol = '…/'
 format = "[$read_only]($read_only_style)[$path]($style)"
 read_only = "[RO]"
 
-[rust]
-symbol = "🦀"
-format = '[$symbol$version](red bold)'
-
 [git_branch]
 symbol = ''
 truncation_length = 4
@@ -39,7 +39,7 @@ format = "[$symbol]($style)[$branch(:$remote_branch)]($style)"
 [status]
 style = ''
 symbol = '[ $common_meaning]($bold red)'
-success_symbol = ""
+success_symbol = "[](bold yellow)"
 format = '[$symbol$signal_name]($style)'
 map_symbol = false
 disabled = false
@@ -48,3 +48,11 @@ disabled = false
 style = 'bold red'
 format = "[ with sudo]($style)"
 disabled = false
+
+[package]
+format = '[$version](208 bold)'
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
+format = "$symbol "
