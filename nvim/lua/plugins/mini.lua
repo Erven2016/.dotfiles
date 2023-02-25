@@ -22,6 +22,7 @@ local starter_items = function(sections)
     { name = gen_name("ff", "find files"), action = "Telescope find_files", section = "Start" },
     { name = gen_name("fm", "file manager"), action = "Telescope file_browser", section = "Start" },
     { name = gen_name("fh", "history files"), action = "Telescope oldfiles", section = "Start" },
+    { name = gen_name("fn", "new file"), action = "enew", section = "Start" },
   }
 
   local section_settings = {

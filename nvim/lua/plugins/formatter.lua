@@ -68,6 +68,7 @@ return {
         },
 
         nu = lsp_format,
+        toml = lsp_format,
 
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
