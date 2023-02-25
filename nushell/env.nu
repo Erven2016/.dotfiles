@@ -84,3 +84,9 @@ let-env NU_PLUGIN_DIRS = [
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
 
+# set default locle to en_US.UTF-8
+if (env | where name == LANG) == [] and (env | where name == LC_ALL) == [] {
+  let-env LANG = "en_US.UTF-8"
+  let-env LC_ALL = "en_US.UTF-8"
+}
+

@@ -5,6 +5,7 @@ format = """
 
 [hostname]
 ssh_only = false
+ssh_symbol = " SSH "
 format = '[$ssh_symbol](bold blue)[$hostname](bold green)'
 # trim_at = '.companyname.com'
 trim_at = ""
@@ -45,6 +46,5 @@ disabled = false
 
 [sudo]
 style = 'bold red'
-symbol = '👩‍💻 '
-format = "[with sudo]($style)"
+format = "[ with sudo]($style)"
 disabled = false
