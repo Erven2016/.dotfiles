@@ -91,6 +91,7 @@ map(mode.normal, "<A-x>", "<CMD>Lspsaga show_buf_diagnostics<CR>", opt) -- show 
 map(mode.normal, "<A-X>", "<CMD>Telescope diagnostics<CR>", opt) -- show diagnostic of all buffers
 
 -- *Buffers
+map(mode.normal, "fb", "<CMD>Telescope buffers<CR>", opt) -- find buffer via Telescope
 map(mode.normal, "<A-,>", "<Cmd>BufferPrevious<CR>", opt) -- switch to prev buffer
 map(mode.normal, "<A-.>", "<Cmd>BufferNext<CR>", opt) -- switch to next buffers
 -- Re-order to previous/next
