@@ -13,9 +13,8 @@ end
 M.nvim_lspconfig = function() end
 
 M.mason_lspconfig = function()
-
   -- stared lsps but will not install automatically on arm64: letx
-  local ensure_installed_lsp = {"rust_analyzer", "lua_ls", "pylsp"}
+  local ensure_installed_lsp = { "rust_analyzer", "lua_ls", "pylsp" }
 
   require("mason-lspconfig").setup({
     ensure_installed = ensure_installed_lsp,
