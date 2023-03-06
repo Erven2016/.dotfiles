@@ -6,6 +6,7 @@ source ~/.dotfiles/nushell/custom.d/alias.nu # load alias
 
 # load completions
 source ~/.dotfiles/nushell/completion.d/git.nu
+source ~/.dotfiles/nushell/completion.d/env.nu
 
 # External completer example
 # let carapace_completer = {|spans|
