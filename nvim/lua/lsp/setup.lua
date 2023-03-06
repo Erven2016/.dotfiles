@@ -13,21 +13,11 @@ end
 M.nvim_lspconfig = function() end
 
 M.mason_lspconfig = function()
-  local arch = require("jit").arch
-  local alternative_lsp = {
-    all = { "rust_analyzer", "lua_ls", "pylsp" },
-    arm64 = { "marksman", "ltex" }, -- disabled in arm64 architect
-  }
-  local ensure_installed_lsp = {}
 
-  for index, value in ipairs(alternative_lsp) do
-    if index ~= arch then
-      vim.tbl_deep_extend("force", ensure_installed_lsp, value)
-    end
-  end
+  -- stared lsps but will not install automatically on arm64: letx
+  local ensure_installed_lsp = {"rust_analyzer", "lua_ls", "pylsp"}
 
   require("mason-lspconfig").setup({
-    -- TODO: disabled markdown for aarch64
     ensure_installed = ensure_installed_lsp,
     automatic_installation = true,
   })
