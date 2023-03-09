@@ -149,10 +149,10 @@ map(mode.normal, "<leader>tc", function()
 end, opt) -- toggle list of todo comments in project
 
 -- windows.nvim shortcut
-map(mode.normal, "<leader>w=", "<CMD>WindowsEqualize<CR>", opt) -- equalize windows
-map(mode.normal, "<leader>wm", "<CMD>WindowsMaximize<CR>", opt) -- maximize windows
-map(mode.normal, "<leader>wv", "<CMD>WindowsMaximizeVertically<CR>", opt) -- maximize window vertically
-map(mode.normal, "<leader>wh", "<CMD>WindowsMaximizeHorizontally<CR>", opt) -- maximize window horizontally
+map(mode.normal, "<C-w>=", "<CMD>WindowsEqualize<CR>", opt) -- equalize windows
+map(mode.normal, "<C-w>m", "<CMD>WindowsMaximize<CR>", opt) -- maximize windows
+map(mode.normal, "<C-w>\\", "<CMD>WindowsMaximizeVertically<CR>", opt) -- maximize window vertically
+map(mode.normal, "<C-w>/", "<CMD>WindowsMaximizeHorizontally<CR>", opt) -- maximize window horizontally
 
 -- *** Export Keybindings ***
 local M = {}
