@@ -43,6 +43,9 @@ end
 -- !DisabledKeys
 map({ mode.normal, mode.visual, mode.visual_block }, "K", "<nop>", opt)
 
+-- *Help
+map(mode.normal, "<C-F1>", "<CMD>vert help<CR>", opt) -- open help in a vertical window
+
 -- *EditerFeatureExpand
 map(mode.normal, "<leader>m", "<CMD>Telescope marks<CR>", opt) -- toggle marks list
 map(mode.normal, "fc", "<CMD>Telescope commands<CR>", opt) -- toggle command list
